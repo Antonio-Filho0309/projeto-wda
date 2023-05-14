@@ -53,19 +53,21 @@ if(isset($_POST['submit'])){
           $estoque_bd = $livro_data['estoque'];
           $estoque_novo = $estoque_bd - 1;
 
-          if($nome_livro_bd === $nome_livro_bd){
-              $sqlalterar = "UPDATE livro SET estoque = '$estoque_novo' WHERE nome = '$livro'";
-              $sqlResultAlterar = $conexao -> query($sqlalterar);
-           }
-          $result = mysqli_query($conexao, "INSERT INTO aluguel(nome,livro,dataal,dataprev,datadevo) VALUES ('$nome','$livro','$dataal','$dataprev','$datadevo')");
-           }
-         
+          if($nome_livro_bd === $nome_livro_bd && $estoque_novo >=0 ){
+            $sqlalterar = "UPDATE livro SET estoque = '$estoque_novo' WHERE nome = '$livro'";
+            $sqlResultAlterar = $conexao -> query($sqlalterar);
+            $result = mysqli_query($conexao, "INSERT INTO aluguel(nome,livro,dataal,dataprev,datadevo) VALUES ('$nome','$livro','$dataal','$dataprev','$datadevo')");
+         } else if($estoque_novo < 0){
+          echo "<script> alert('Livro esgotado') </script>";
+        }
       }
-     }else{
-    echo "<script> window.alert('A data de aluguel não pode ser posterior ao dia de hoje!') </script>";
+     
+  }
+       
+    }else{
+  echo "<script> window.alert('A data de aluguel não pode ser posterior ao dia de hoje!') </script>";
   }
 }
-
   $sql_aluguel= "SELECT * FROM aluguel ORDER BY id ASC";
 
   if (!empty($_GET['pesquisar'])) {
