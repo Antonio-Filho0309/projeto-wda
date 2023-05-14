@@ -122,7 +122,7 @@
           <!--Containers--->
             <div id="grafico" class="container bg-light">
               <div style="padding-left: 430px;">
-              <h1>Livros mais alugados: </h1>
+              <h1> 5 Livros mais alugados: </h1>
               </div>
               <canvas id="grafico01" width="180px" height="100%" style="margin-top:5px;"></canvas>
             
