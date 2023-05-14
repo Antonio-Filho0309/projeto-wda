@@ -90,7 +90,7 @@ $result = $conexao -> query($sql);
               </li>
               
             </ul>
-            <button class="btn btn-outline-danger" type="submit" id="btn-fds">Sair</button>
+            <a class="btn btn-outline-danger" href="../php/sair.php" role="button">Sair</a>
           </div>
         </div>
          
